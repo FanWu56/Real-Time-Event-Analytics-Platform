@@ -21,6 +21,19 @@ CREATE TABLE IF NOT EXISTS events (
   received_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS event_aggregates (
+  project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+  event_name TEXT NOT NULL,
+  window_start TIMESTAMPTZ NOT NULL,
+  window_end TIMESTAMPTZ NOT NULL,
+  count INTEGER NOT NULL DEFAULT 0,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (project_id, event_name, window_start)
+);
+
+CREATE INDEX IF NOT EXISTS idx_event_aggregates_project_window
+ON event_aggregates(project_id, window_start DESC);
+
 INSERT INTO projects (id, name)
 VALUES ('demo_project_1', 'Demo Project')
 ON CONFLICT (id) DO NOTHING;
