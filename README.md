@@ -55,7 +55,6 @@ fulls/
   frontend/
     src/
       api/
-      components/
       pages/
       types/
   sdk/
