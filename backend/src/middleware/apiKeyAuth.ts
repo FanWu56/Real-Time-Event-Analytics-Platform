@@ -1,28 +1,44 @@
-import { NextFunction, Request, Response } from "express"
+import { NextFunction, Request, Response } from "express";
+import { getProjectIdByApiKey } from "../store/apiKeyStore";
 
-const DEMO_API_KEY : Record<string, string>= {
-     test_api_key_123: "demo_project_1",
-}
+export type AuthenticatedRequest = Request & {
+  projectId?: string;
+  apiKey?: string;
+};
 
-// put apiKey here from req.header for convinence
-export type AuthenticatedRequest = Request & {projectId? : string, apiKey? : string}
+export async function apiKeyAuth(
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const apiKey = req.header("x-api-key");
 
-export function apiKeyAuth(req : AuthenticatedRequest, res : Response, next : NextFunction){
-    const apiKey = req.header("x-api-key")
-
-    if (!apiKey){
-        res.status(401).json("error : invalid api key")
-        return
+    if (!apiKey) {
+      res.status(401).json({
+        error: "Missing API key",
+      });
+      return;
     }
 
-    const projectId = DEMO_API_KEY[apiKey]
+    const projectId = await getProjectIdByApiKey(apiKey);
 
-    if (!projectId){
-        res.status(403).json("error : invalid project id")
-        return
+    if (!projectId) {
+      res.status(403).json({
+        error: "Invalid API key",
+      });
+      return;
     }
 
-    req.projectId = projectId
-    req.apiKey = apiKey
-    next()
+    req.apiKey = apiKey;
+    req.projectId = projectId;
+
+    next();
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      error: "Failed to authenticate API key",
+    });
+  }
 }
