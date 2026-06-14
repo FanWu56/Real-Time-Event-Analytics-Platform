@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SDK Demo</title>
+  </head>
+  <body>
+    <h1>SDK Demo Website</h1>
+
+    <button data-analytics-event="hero_button_click">
+      Click Hero Button
+    </button>
+
+    <button id="signup-button">
+      Signup
+    </button>
+
+    <script type="module">
+      import { analytics } from "./dist/index.js";
+
+      analytics.init({
+        apiKey: "pk_test_4667ca5b6839d8bf59b583d4a0e97db921f5b541f8c28322",
+        endpoint: "http://localhost:4000/api/events",
+        debug: true,
+        autoTrackPageViews: true,
+      });
+
+      analytics.identify("demo_user_1");
+
+      analytics.enableAutoClickTracking();
+
+      document
+        .getElementById("signup-button")
+        .addEventListener("click", () => {
+          analytics.trackButtonClick("signup-button", {
+            location: "homepage",
+          });
+        });
+    </script>
+  </body>
+</html>
