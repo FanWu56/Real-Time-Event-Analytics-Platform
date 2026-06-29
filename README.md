@@ -69,8 +69,10 @@ https://www.docker.com/products/docker-desktop/
 
 ### 2. Clone repo & Go to directory
 
+```bash
 git clone https://github.com/FanWu56/Real-Time-Event-Analytics-Platform
 cd Real-Time-Event-Analytics-Platform
+```
 
 ### 3. Start PostgreSQL
 
