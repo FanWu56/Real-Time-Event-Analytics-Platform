@@ -105,10 +105,11 @@ When success, open (or the link showed in CMD)
 http://localhost:5173
 ```
 
-### 6. Use page testing
+### 6. Use page testing (Open a new CMD window, and do not close the backend & frontend)
 
-In frontend CMD input(Replace "YOUR_API_KEY" with the api key generated in Front-end web page):
+Replace "YOUR_API_KEY" with the api key generated in Front-end web page:
 ```bash
+cd frontend
 curl -X POST http://localhost:4000/api/events ^
   -H "Content-Type: application/json" ^
   -H "x-api-key: YOUR_API_KEY" ^
