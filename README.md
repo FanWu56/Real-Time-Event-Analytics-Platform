@@ -63,4 +63,83 @@ fulls/
 
 ## Getting Started
 
-1. 
+1. Install and Open Docker Desktop
+
+https://www.docker.com/products/docker-desktop/
+
+2. Clone repo & Go to directory
+
+git clone https://github.com/FanWu56/Real-Time-Event-Analytics-Platform
+cd Real-Time-Event-Analytics-Platform
+
+2. Start PostgreSQL
+
+```bash
+docker compose up -d
+```
+
+3. Start backend
+
+```bash
+cd backend
+npm install
+copy .env.example .env
+npm run db:init
+npm run dev
+```
+
+4. Start Frontend (Open a new CMD window, and do not close the backend.)
+
+```bash
+cd frontend
+npm install
+copy .env.example .env
+npm run dev
+```
+
+When success, open (or the link showed in CMD)
+```text
+http://localhost:5173
+```
+
+5. Use page testing
+
+In frontend CMD input(Replace "YOUR_API_KEY" with the api key generated in Front-end web page):
+```bash
+curl -X POST http://localhost:4000/api/events ^
+  -H "Content-Type: application/json" ^
+  -H "x-api-key: YOUR_API_KEY" ^
+  -d "{\"eventName\":\"page_view\",\"userId\":\"user_1\",\"properties\":{\"page\":\"/home\"}}"
+```
+
+6. Run SDK
+
+Open a new CMD
+```bash
+cd Real-Time-Event-Analytics-Platform\sdk
+npm install
+npm run build
+```
+
+Open 
+```bash
+sdk/demo.html
+```
+
+Replace "YOUR_API_KEY" with the api key generated in Front-end web page, then open
+```bash
+npx serve .
+```
+Open the address it gives you, for example:
+```bash
+http://localhost:3000/demo.html
+```
+
+Important
+```text
+The backend includes API-key-based rate limiting. For demo purposes, the default development limit is 10 events per minute per API key. Therefore, if you send more than 10 events within one minute and the dashboard stops updating, this is expected behavior, not a bug.
+
+```
+
+
+
