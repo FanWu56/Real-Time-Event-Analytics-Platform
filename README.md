@@ -42,7 +42,8 @@ A full-stack real-time event analytics platform that allows client applications 
 ## Project Structure
 
 ```text
-fulls/
+Real-Time-Event-Analytics-Platform/
+  docker-compose.yml
   backend/
     src/
       db/
