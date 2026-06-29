@@ -135,11 +135,5 @@ Open the address it gives you, for example:
 http://localhost:3000/demo.html
 ```
 
-Important
-```text
+## Important
 The backend includes API-key-based rate limiting. For demo purposes, the default development limit is 10 events per minute per API key. Therefore, if you send more than 10 events within one minute and the dashboard stops updating, this is expected behavior, not a bug.
-
-```
-
-
-
