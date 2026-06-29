@@ -63,7 +63,7 @@ fulls/
 
 ## Getting Started
 
-1. Install and Open Docker Desktop
+### 1. Install and Open Docker Desktop
 
 https://www.docker.com/products/docker-desktop/
 
