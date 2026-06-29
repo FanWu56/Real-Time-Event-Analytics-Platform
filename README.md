@@ -67,18 +67,18 @@ fulls/
 
 https://www.docker.com/products/docker-desktop/
 
-2. Clone repo & Go to directory
+### 2. Clone repo & Go to directory
 
 git clone https://github.com/FanWu56/Real-Time-Event-Analytics-Platform
 cd Real-Time-Event-Analytics-Platform
 
-2. Start PostgreSQL
+### 3. Start PostgreSQL
 
 ```bash
 docker compose up -d
 ```
 
-3. Start backend
+### 4. Start backend
 
 ```bash
 cd backend
@@ -88,7 +88,7 @@ npm run db:init
 npm run dev
 ```
 
-4. Start Frontend (Open a new CMD window, and do not close the backend.)
+### 5. Start Frontend (Open a new CMD window, and do not close the backend.)
 
 ```bash
 cd frontend
@@ -102,7 +102,7 @@ When success, open (or the link showed in CMD)
 http://localhost:5173
 ```
 
-5. Use page testing
+### 6. Use page testing
 
 In frontend CMD input(Replace "YOUR_API_KEY" with the api key generated in Front-end web page):
 ```bash
@@ -112,7 +112,7 @@ curl -X POST http://localhost:4000/api/events ^
   -d "{\"eventName\":\"page_view\",\"userId\":\"user_1\",\"properties\":{\"page\":\"/home\"}}"
 ```
 
-6. Run SDK
+### 7. Run SDK
 
 Open a new CMD
 ```bash
