@@ -114,21 +114,20 @@ curl -X POST http://localhost:4000/api/events ^
   -d "{\"eventName\":\"page_view\",\"userId\":\"user_1\",\"properties\":{\"page\":\"/home\"}}"
 ```
 
-### 7. Run SDK
+### 7. Run SDK (Open a new CMD window, and do not close the backend & frontend)
 
-Open a new CMD
 ```bash
 cd Real-Time-Event-Analytics-Platform\sdk
 npm install
 npm run build
 ```
 
-Open 
+Open "demo.html" and replace "YOUR_API_KEY" with the api key generated in Front-end web page
 ```bash
 sdk/demo.html
 ```
 
-Replace "YOUR_API_KEY" with the api key generated in Front-end web page, then open
+Then
 ```bash
 npx serve .
 ```
