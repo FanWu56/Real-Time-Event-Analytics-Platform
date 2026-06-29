@@ -59,3 +59,8 @@ fulls/
       types/
   sdk/
     src/
+```
+
+## Getting Started
+
+1. 
